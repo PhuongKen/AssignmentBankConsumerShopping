@@ -1,0 +1,11 @@
+E:\Sem 3\BankOnlineShopConsumer\Model\bin\Debug\Model.dll.config
+E:\Sem 3\BankOnlineShopConsumer\Model\bin\Debug\Model.dll
+E:\Sem 3\BankOnlineShopConsumer\Model\bin\Debug\Model.pdb
+E:\Sem 3\BankOnlineShopConsumer\Model\bin\Debug\EntityFramework.dll
+E:\Sem 3\BankOnlineShopConsumer\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\Sem 3\BankOnlineShopConsumer\Model\bin\Debug\EntityFramework.xml
+E:\Sem 3\BankOnlineShopConsumer\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.csproj.CopyComplete
+E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.dll
+E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.pdb
