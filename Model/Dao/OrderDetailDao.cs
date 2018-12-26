@@ -34,7 +34,7 @@ namespace Model.Dao
             long total = 0;
             foreach (var item in orderDetail)
             {
-                long price = Convert.ToInt64(item.Price);
+                long price = Convert.ToInt64(item.Price) * Convert.ToInt64(item.Quantity);
                 total += price;
             }
             return total;

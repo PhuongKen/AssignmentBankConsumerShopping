@@ -125,38 +125,42 @@ namespace BankOnlineShopConsumer.Controllers
         [HttpPost]
         public ActionResult Payment(string shipname, string mobile, string address, string email)
         {
-            var order = new Order();
-            order.CreatedDate = DateTime.Now;
-
-            var userSession = (UserLogin)Session[BankOnlineShopConsumer.Common.CommonConstants.USER_SESSION];
-
-            order.CustomerID = userSession.UserID;
-            order.ShipName = shipname;
-            order.ShipMobile = mobile;
-            order.ShipAddress = address;
-            order.ShipEmail = email;
-
-            try
+            if (ModelState.IsValid)
             {
-                var id = new OrderDao().Insert(order);
-                var cart = (List<CartItem>)Session[CommonConstants.CartSession];
-                var detailDao = new OrderDetailDao();
-                foreach (var item in cart)
+                var order = new Order();
+                order.CreatedDate = DateTime.Now;
+
+                var userSession = (UserLogin)Session[BankOnlineShopConsumer.Common.CommonConstants.USER_SESSION];
+
+                order.CustomerID = userSession.UserID;
+                order.ShipName = shipname;
+                order.ShipMobile = mobile;
+                order.ShipAddress = address;
+                order.ShipEmail = email;
+
+                try
                 {
-                    var orderDetail = new OrderDetail();
-                    orderDetail.ProductID = item.Product.ID;
-                    orderDetail.OrderID = id;
-                    orderDetail.Price = item.Product.Price;
-                    orderDetail.Quantity = item.Quantity;
-                    detailDao.Insert(orderDetail);
+                    var id = new OrderDao().Insert(order);
+                    var cart = (List<CartItem>)Session[CommonConstants.CartSession];
+                    var detailDao = new OrderDetailDao();
+                    foreach (var item in cart)
+                    {
+                        var orderDetail = new OrderDetail();
+                        orderDetail.ProductID = item.Product.ID;
+                        orderDetail.OrderID = id;
+                        orderDetail.Price = item.Product.Price;
+                        orderDetail.Quantity = item.Quantity;
+                        detailDao.Insert(orderDetail);
+                    }
+                    Session[CommonConstants.CartSession] = null;
                 }
-                Session[CommonConstants.CartSession] = null;
+                catch (Exception ex)
+                {
+                    return Redirect("/loi-thanh-toan");
+                }
+                return Redirect("/hoan-thanh");
             }
-            catch(Exception ex)
-            {
-                return Redirect("/loi-thanh-toan");
-            }
-            return Redirect("/hoan-thanh");
+            return View("Payment");
         }
 
         public ActionResult Success()

@@ -897,10 +897,10 @@ namespace BankOnlineShopConsumer.BankReference {
         System.Threading.Tasks.Task<bool> LoginPartnerAccountAsync(BankOnlineShopConsumer.BankReference.PartnerAccount partner);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBank/AddTransaction", ReplyAction="http://tempuri.org/IBank/AddTransactionResponse")]
-        bool AddTransaction(BankOnlineShopConsumer.BankReference.Transaction transaction);
+        int AddTransaction(BankOnlineShopConsumer.BankReference.Transaction transaction);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBank/AddTransaction", ReplyAction="http://tempuri.org/IBank/AddTransactionResponse")]
-        System.Threading.Tasks.Task<bool> AddTransactionAsync(BankOnlineShopConsumer.BankReference.Transaction transaction);
+        System.Threading.Tasks.Task<int> AddTransactionAsync(BankOnlineShopConsumer.BankReference.Transaction transaction);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBank/AddHistoryTransaction", ReplyAction="http://tempuri.org/IBank/AddHistoryTransactionResponse")]
         bool AddHistoryTransaction(BankOnlineShopConsumer.BankReference.HistoryTransaction historyTransaction);
@@ -988,11 +988,11 @@ namespace BankOnlineShopConsumer.BankReference {
             return base.Channel.LoginPartnerAccountAsync(partner);
         }
         
-        public bool AddTransaction(BankOnlineShopConsumer.BankReference.Transaction transaction) {
+        public int AddTransaction(BankOnlineShopConsumer.BankReference.Transaction transaction) {
             return base.Channel.AddTransaction(transaction);
         }
         
-        public System.Threading.Tasks.Task<bool> AddTransactionAsync(BankOnlineShopConsumer.BankReference.Transaction transaction) {
+        public System.Threading.Tasks.Task<int> AddTransactionAsync(BankOnlineShopConsumer.BankReference.Transaction transaction) {
             return base.Channel.AddTransactionAsync(transaction);
         }
         

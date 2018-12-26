@@ -21,9 +21,9 @@ namespace Model.Dao
             return order.ID;
         }
 
-        public long Find()
+        public long Find(long cutomerID)
         {
-            var order = db.Orders.Where(x=>x.Status == null).OrderByDescending(x => x.CreatedDate).Take(1).ToList();
+            var order = db.Orders.Where(x=>x.Status == null && x.CustomerID == cutomerID).OrderByDescending(x => x.CreatedDate).Take(1).ToList();
             long id = 0;
             foreach (var item in order)
             {

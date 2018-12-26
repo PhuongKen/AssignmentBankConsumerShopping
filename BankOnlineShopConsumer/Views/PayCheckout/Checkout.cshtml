@@ -5,62 +5,69 @@
     var orderID = ViewBag.orderID;
     var total = ViewBag.total;
 }
+<style>
+.placehoder::-webkit-input-placeholder {
+        color: red
+    }
+</style>
 
-@using (Html.BeginForm("Checkout", "PayCheckout", FormMethod.Post))
+@if (@Session["PartnerAccount"] != null)
 {
-    @Html.AntiForgeryToken()
-    if (@Session["PartnerAccount"] != null)
-    {
-        
-        <div class="form-horizontal" style="text-align: center">
-            <h4>Transaction</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <div>
-                    <h4>Mã đơn hàng</h4>
-                </div>
-                <div>
-                    <input type="text" name="billId" value="@orderID" />
-                    @Html.ValidationMessageFor(model => model.billId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div>
-                    <h4>Tên giao dịch</h4>
-                </div>
-                <div>
-                    <input type="text" name="name" />
-                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                <div>
-                    <h4>Số tiền giao dịch</h4>
-                </div>
-                <div>
-                    <input type="number" name="amount" value="@total" />
-                    @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
-                </div>
-            </div>
+    <div class="section group">
+        <div class="row">
+            <div class="col-md-3">
 
-            <div class="form-group">
-                <div>
-                    <h4>Nội dung giao dịch</h4>
-                </div>
-                <div>
-                    <input type="text" name="content" />
-                    @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
-                </div>
             </div>
+            <div class="col-md-6">
+                <h3 style="text-align: center">Thanh toán đơn hàng qua pay</h3>
+                
+                @using (Html.BeginForm("Checkout", "PayCheckout", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label>Mã đơn hàng</label>
+                        <input type="text" class="form-control" name="billId" value="@orderID" disabled />
+                        @Html.ValidationMessageFor(model => model.billId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Tên giao dịch</label>
+                        <input type="text" class="form-control nameTransaction" name="name" />
+                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                        @if (Session["checkNull"] != null || Session["checkName"] != null)
+                        {
+                            <h5 style="color: red">Vui lòng nhập tên giao dịch của bạn.</h5>
+                        }
+                    </div>
 
-            <div class="form-group">
-                <div>
-                    <input type="submit" value="Thanh toán" class="btn btn-default" />
-                </div>
+                    <div class="form-group">
+                        <label>Số tiền giao dịch</label>
+                        <input type="number" class="form-control" name="amount" value="@total"disabled/>
+                        @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nội dung giao dịch</label>
+                        <input type="text" class="form-control contentTransaction" name="content" />
+                        @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
+                        @if (Session["checkNull"] != null || Session["checkContent"] != null)
+                        {
+                            <h5 style="color: red">Vui lòng nhập nội dung giao dịch của bạn.</h5>
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" value="Thanh toán" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-3">
+
             </div>
         </div>
-    }
-}
 
+    </div>
+}

@@ -159,6 +159,7 @@
   <ItemGroup>
     <Content Include="Assets\client\css\easy-responsive-tabs.css" />
     <Content Include="Assets\client\css\global.css" />
+    <Content Include="Assets\client\css\loginPay.css" />
     <Content Include="Assets\client\css\slider.css" />
     <Content Include="Assets\client\css\style.css" />
     <Content Include="Assets\client\images\about_img.jpg" />

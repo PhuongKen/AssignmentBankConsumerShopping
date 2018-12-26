@@ -29,7 +29,7 @@ namespace BankOnlineShopConsumer.Models
             }
         }
 
-        public bool Transaction(Transaction transaction)
+        public int Transaction(Transaction transaction)
         {
             var transactioNew = new BankReference.Transaction()
             {
@@ -44,12 +44,17 @@ namespace BankOnlineShopConsumer.Models
                 createAt = transaction.createAt,
                 updateAt = transaction.updateAt
             };
-            if (bank.AddTransaction(transactioNew))
+            if (bank.AddTransaction(transactioNew) == 1)
             {
-                return true;
+                return 1;
             }
+            else if (bank.AddTransaction(transactioNew) == -1)
             {
-                return false;
+                return -1;
+            }
+            else 
+            {
+                return 0;
             }
         }
 

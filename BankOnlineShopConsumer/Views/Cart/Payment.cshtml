@@ -3,6 +3,15 @@
     ViewBag.Title = "Check Out";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .field-validation-error {
+        color: Red;
+    }
+
+    .placehoder::-webkit-input-placeholder {
+        color: red
+    }
+</style>
 @section jsFooter{
     <script src="/Assets/client/js/controller/cartController.js"></script>
 }
@@ -78,8 +87,45 @@
                                 <input name="email" class="form-control email" />
                             </div>
                             <button type="submit" class="btn">Gửi đơn hàng.</button>
-                            <button type="button" class="btn" id="payOnline">Thanh toán qua pay.</button>
+                            @*<button type="button" class="btn" id="payOnline">Thanh toán qua pay.</button>*@
                         }
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-8">
+                                <h3>Bạn có thể thanh toán qua Pay.</h3>
+                                <div class="login-panel panel panel-default">
+                                    <div class="panel-heading" style="text-align: center;">
+                                        <h3 class="panel-title">Đăng nhập tài khoản pay của bạn.</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        @using (Html.BeginForm("Index", "PayLogin", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <input class="form-control partnerAccount" placeholder="Tài khoản" name="partnerAccount" type="number" autofocus>
+                                                    
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="form-control paswordPartner" placeholder="Mật khẩu" name="password" type="password">
+                                                    
+                                                </div>
+                                                @*<div class="checkbox">
+                                                    <label>
+                                                        <input name="remember" type="checkbox" value="Remember Me">Nhớ tài khoản
+                                                    </label>
+                                                </div>*@
+                                                <!-- Change this to a button or input when using this as a form -->
+                                                <button type="button" id="payOnline" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
+                                            </fieldset>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -15,24 +15,50 @@ namespace BankOnlineShopConsumer.Controllers
         BankService db = new BankService();
 
         // GET: PayLogin
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //[HttpGet]
+        // public ActionResult Index()
+        // {
+        //     return View();
+        // }
 
-        [HttpPost]
-        public ActionResult Index(PartnerAccount partner)
+        // [HttpPost]
+        // public ActionResult Index(PartnerAccount partner)
+        // {
+        //     if (db.LoginPartnerAccount(partner) == false)
+        //     {
+        //         return View(partner);
+        //     }
+        //     else
+        //     {
+        //         Session["PartnerAccount"] = db.Find(partner.partnerAccount).accountNumber;
+        //         return RedirectToAction("Checkout","PayCheckout");
+        //     }
+        // }
+
+        public JsonResult Login(string Account, string Password)
         {
-            if (db.LoginPartnerAccount(partner) == false)
+            var partner = new PartnerAccount()
             {
-                return View(partner);
+                partnerAccount = Convert.ToInt64(Account),
+                password = Password
+            };
+            if (db.LoginPartnerAccount(partner) == true)
+            {
+                Session["PartnerAccount"] = db.Find(partner.partnerAccount).accountNumber;
+                return Json(new
+                {
+                    status = true
+                });
             }
             else
             {
-                Session["PartnerAccount"] = db.Find(partner.partnerAccount).accountNumber;
-                return RedirectToAction("Checkout","PayCheckout");
+                return Json(new
+                {
+                    status = false
+                });
             }
+               
+            
         }
 
         public JsonResult SaveOrder(string shipname, string mobile, string address, string email)
