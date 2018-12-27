@@ -44,11 +44,12 @@ namespace BankOnlineShopConsumer.Models
                 createAt = transaction.createAt,
                 updateAt = transaction.updateAt
             };
-            if (bank.AddTransaction(transactioNew) == 1)
+            var result = bank.AddTransaction(transactioNew);
+            if (result == 1)
             {
                 return 1;
             }
-            else if (bank.AddTransaction(transactioNew) == -1)
+            else if (result == -1)
             {
                 return -1;
             }

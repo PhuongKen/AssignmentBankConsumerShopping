@@ -48,7 +48,6 @@ namespace BankOnlineShopConsumer.Controllers
 
                     var total = new OrderDetailDao().Find(orderID);
                     
-
                     if (orderID.ToString() != transaction.billId)
                     {
                         ModelState.AddModelError("", "Bạn đã thay đổi mã đơn hàng mà bạn đã chọn để thanh toán." +
@@ -64,30 +63,6 @@ namespace BankOnlineShopConsumer.Controllers
                         ViewBag.orderID = orderID;
                         ViewBag.total = total;
                     }
-                    
-                    if (transaction.name != null)
-                    {
-                        Session["checkNull"] = null;
-                        Session["checkName"] = null;
-                    }
-                    else
-                    {
-                        Session["checkName"] = 1;
-                    }
-
-                    if (transaction.content != null)
-                    {
-                        Session["checkNull"] = null;
-                        Session["checkContent"] = null;
-                    }
-                    else
-                    {
-                        Session["checkContent"] = 1;
-                    }
-                    if (transaction.content == null && transaction.name == null)
-                    {
-                        Session["checkNull"] = 1;
-                    }
 
                     if (result == 1)
                     {
@@ -102,11 +77,26 @@ namespace BankOnlineShopConsumer.Controllers
                         ViewBag.total = total;
                     }
                 }
-                return RedirectToAction("Checkout", "PayCheckout");
+
+                var userSes= (UserLogin)Session[BankOnlineShopConsumer.Common.CommonConstants.USER_SESSION];
+                var ID = new OrderDao().Find(userSes.UserID);
+                var totalPrice = new OrderDetailDao().Find(ID);
+                ViewBag.orderID = ID;
+                ViewBag.total = totalPrice;
+                ViewBag.name = transaction.name;
+                ViewBag.content = transaction.content;
+                return View(transaction);
             }
             catch
             {
-                return RedirectToAction("Checkout","PayCheckout");
+                //var userSes = (UserLogin)Session[BankOnlineShopConsumer.Common.CommonConstants.USER_SESSION];
+                //var ID = new OrderDao().Find(userSes.UserID);
+                //var totalPrice = new OrderDetailDao().Find(ID);
+                //ViewBag.orderID = ID;
+                //ViewBag.total = totalPrice;
+                //ViewBag.name = transaction.name;
+                //ViewBag.content = transaction.content;
+                return View(transaction);
             }
         }
 

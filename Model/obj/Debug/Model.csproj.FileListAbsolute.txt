@@ -9,3 +9,4 @@ E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.csproj.CoreCompileInputs.c
 E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.csproj.CopyComplete
 E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.dll
 E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.pdb
+E:\Sem 3\BankOnlineShopConsumer\Model\obj\Debug\Model.csprojAssemblyReference.cache
