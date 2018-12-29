@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace BankOnlineShopConsumer.Areas.AdminManager.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         // GET: AdminManager/User
         public ActionResult Index()

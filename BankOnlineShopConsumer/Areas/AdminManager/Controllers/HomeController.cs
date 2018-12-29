@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BankOnlineShopConsumer.Areas.AdminManager.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: AdminManager/Home
         public ActionResult Index()

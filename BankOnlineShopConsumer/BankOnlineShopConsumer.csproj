@@ -135,12 +135,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminManager\AdminManagerAreaRegistration.cs" />
+    <Compile Include="Areas\AdminManager\Controllers\BaseController.cs" />
     <Compile Include="Areas\AdminManager\Controllers\HomeController.cs" />
     <Compile Include="Areas\AdminManager\Controllers\LoginController.cs" />
     <Compile Include="Areas\AdminManager\Controllers\OrderController.cs" />
     <Compile Include="Areas\AdminManager\Controllers\ProductController.cs" />
     <Compile Include="Areas\AdminManager\Controllers\UserController.cs" />
     <Compile Include="Areas\AdminManager\Models\LoginModel.cs" />
+    <Compile Include="Common\AdminLogin.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Connected Services\BankReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -469,6 +471,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminManager\Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace BankOnlineShopConsumer.Areas.AdminManager.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         OrderDao dao = new OrderDao();
         // GET: AdminManager/Order

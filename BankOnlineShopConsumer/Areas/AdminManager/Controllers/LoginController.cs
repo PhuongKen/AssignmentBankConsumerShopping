@@ -28,7 +28,7 @@ namespace BankOnlineShopConsumer.Areas.AdminManager.Controllers
                 if (result == 1)
                 {
                     var admin = dao.GetById(model.UserName);
-                    var adminSession = new UserLogin();
+                    var adminSession = new AdminLogin();
                     adminSession.UserName = admin.UserName;
                     adminSession.UserID = admin.ID;
                     Session.Add(CommonConstants.ADMIN_SESSION, adminSession);

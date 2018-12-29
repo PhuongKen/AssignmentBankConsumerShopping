@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace BankOnlineShopConsumer.Areas.AdminManager.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         ProductDao dao = new ProductDao();
         // GET: AdminManager/Product
