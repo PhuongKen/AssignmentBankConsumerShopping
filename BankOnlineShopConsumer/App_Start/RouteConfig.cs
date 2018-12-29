@@ -15,6 +15,13 @@ namespace BankOnlineShopConsumer
 
 
             routes.MapRoute(
+                name: "Chi tiết sản phẩm",
+                url: "chi-tiet/{MetaTitle}-{id}",
+                defaults: new { controller = "ProductClient", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "BankOlineShopConsumer.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Add Cart",
                 url: "them-gio-hang",
                 defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional },
@@ -66,7 +73,8 @@ namespace BankOnlineShopConsumer
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "BankOnlineShopConsumer.Controllers" }
             );
             
         }

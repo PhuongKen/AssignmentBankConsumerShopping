@@ -1,0 +1,115 @@
+﻿@model Model.EF.User
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/AdminManager/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>UserName</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            <label>Mật khẩu</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+       
+        <dt>
+            <label>Muối</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salt)
+        </dd>
+
+        <dt>
+            <label>Họ và tên</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            <label>Địa chỉ</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            <label>Email</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            <label>Số điện thoại</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            <label>Ngày tạo</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            <label>Tạo bởi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+
+        <dt>
+            <label>Ngày cập nhật</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiledDate)
+        </dd>
+
+        <dt>
+            <label>Cập nhật bởi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiledBy)
+        </dd>
+
+        <dt>
+            <label>Trạng thái</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Danh sách User", "Index")
+</p>

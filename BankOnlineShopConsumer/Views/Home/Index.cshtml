@@ -93,10 +93,10 @@
     <div class="section group">
         @foreach (var item in listNewProducts)
         {
-            var url = "/chi-tiet" + item.MetaTitle + "-" + item.ID;
+            var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
             <div class="grid_1_of_4 images_1_of_4">
                 <a href="@url"><img src="@item.Avartar" alt="@item.Name" /></a>
-                <h2>@item.Name</h2>
+                <h2 class="nowrap">@item.Name</h2>
                 <div class="price-details">
                     <div class="price-number">
                         <p><span class="rupees">@(item.Price.HasValue?item.Price.Value.ToString("N0"): "Liên hệ")</span></p>
@@ -122,7 +122,7 @@
     <div class="section group">
         @foreach (var item in listFeatureProducts)
         {
-            var url = "/chi-tiet-" + item.MetaTitle + "-" + item.ID;
+            var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
             <div class="grid_1_of_4 images_1_of_4">
                 <a href="@url"><img src="@item.Avartar" alt="@item.Name" /></a>
                 <h2>@item.Name</h2>

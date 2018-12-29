@@ -1,0 +1,164 @@
+﻿@model IEnumerable<Model.EF.Product>
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminManager/Views/Shared/_Layout.cshtml";
+    <style>
+        ul li {
+            text-decoration: none;
+            list-style-type: none;
+        }
+    </style>
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới sản phẩm", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avartar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoreImages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PromotionPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncludedVAT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetaTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Warranty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopHot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewCount)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <img src="@item.Avartar" width="70" height="35" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoreImages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PromotionPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncludedVAT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Warranty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TopHot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ViewCount)
+            </td>
+            <td>
+                <ul>
+                    <li><a href="@Url.Action("Edit", "Product", new {id= item.ID })" class="fa fa-edit fa-fw"></a></li>
+                    <li><a href="@Url.Action("Detail", "Product", new {id= item.ID })" class="fa fa-paragraph fa-fw"></a></li>
+                    <li><a data-id="@item.ID" class="fa fa-remove fa-fw deleteProduct"></a></li>
+                </ul>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section jsFooterAdmin{
+    <script>
+        $(".deleteProduct").off('click').on('click', function (e) {
+            e.preventDefault();
+            var userConfirm = confirm("Bạn có chắc muốn xóa sản phẩm này không.");
+            if (userConfirm) {
+                $.ajax({
+                    data: { id: $(this).data('id') },
+                    url: 'Delete',
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                        if (res.status == true) {
+                            window.location.href = "/danh-sach-san-pham";
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+}

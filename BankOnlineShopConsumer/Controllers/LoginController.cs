@@ -45,5 +45,11 @@ namespace BankOnlineShopConsumer.Controllers
             }
             return View("Index");
         }
+
+        public ActionResult LogOut()
+        {
+            Session.Add(CommonConstants.USER_SESSION, null);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -1,0 +1,195 @@
+﻿@model Model.EF.Product
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/AdminManager/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Tên</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            <label>Mô tả</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            <label>Ảnh</label>
+        </dt>
+
+        <dd>
+            <img src="@Model.Avartar" width="200" height="100" />
+        </dd>
+
+        <dt>
+            <label>Xem thêm ảnh</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoreImages)
+        </dd>
+
+        <dt>
+           <label>Gía</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            <label>Gía khuyến mại</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromotionPrice)
+        </dd>
+
+        <dt>
+            <label>Thuế</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncludedVAT)
+        </dd>
+
+        <dt>
+            <label>Số lượng</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            <label>Tiêu đề</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaTitle)
+        </dd>
+
+        <dt>
+            <label>Mã danh mục</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryID)
+        </dd>
+
+        <dt>
+            <label>Chi tiết</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+        <dt>
+            <label>Bảo hành</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Warranty)
+        </dd>
+
+        <dt>
+            <label>Mã hiệu</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            <label>Trạng thái</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            <label>Ngày tạo</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            <label>Tạo bởi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+
+        <dt>
+            <label>Ngày chỉnh sửa</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiledDate)
+        </dd>
+
+        <dt>
+            <label>Người sửa</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiledBy)
+        </dd>
+
+        <dt>
+            <label>Từ khóa</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaKeywords)
+        </dd>
+
+        <dt>
+            <label>Mô tả</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDescriptions)
+        </dd>
+
+        <dt>
+            <label>Top Hot</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TopHot)
+        </dd>
+
+        <dt>
+            <label>Số lượt xem</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewCount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sưae", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</p>

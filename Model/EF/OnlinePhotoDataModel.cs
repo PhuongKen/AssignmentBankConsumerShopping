@@ -12,6 +12,7 @@ namespace Model.EF
         {
         }
 
+        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
@@ -32,6 +33,26 @@ namespace Model.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Admin>()
+                .Property(e => e.UserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Admin>()
+                .Property(e => e.Password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Admin>()
+                .Property(e => e.Salt)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Admin>()
+                .Property(e => e.CreateBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Admin>()
+                .Property(e => e.ModifiledBy)
+                .IsUnicode(false);
+
             modelBuilder.Entity<About>()
                 .Property(e => e.MetaTitle)
                 .IsUnicode(false);

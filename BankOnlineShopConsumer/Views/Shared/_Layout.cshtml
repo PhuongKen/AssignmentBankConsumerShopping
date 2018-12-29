@@ -23,7 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="header">
             <div class="headertop_desc">
                 <div class="call">
-                    <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></p>
+                    <p><span>Cần hỗ trợ?</span> gọi cho chúng tôi <span class="number">0334924847</span></p>
                 </div>
                 <div class="account_desc">
                     <ul>
@@ -31,16 +31,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             var userSession = Session[BankOnlineShopConsumer.Common.CommonConstants.USER_SESSION];
                             if (userSession == null)
                             {
-                                <li><a href="#">Register</a></li>
-                                <li><a href="@Url.Action("Index", "Login")">Login</a></li>
-                                <li><a href="#">Delivery</a></li>
-                                <li><a href="#">Checkout</a></li>
-                                <li><a href="#">My Account</a></li>
+                                <li><a href="@Url.Action("Index","Register")">Đăng kí</a></li>
+                                <li><a href="@Url.Action("Index", "Login")">Đăng nhập</a></li>
                             }
                             else
                             {
                                 var user = (UserLogin)userSession;
                                 <li><a href="#">@user.UserName</a></li>
+                                <li><a href="@Url.Action("LogOut","Login")">Đăng xuất</a></li>
                             }
                         }
                     </ul>
